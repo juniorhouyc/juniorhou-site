@@ -1,0 +1,103 @@
+---
+const tags = [
+  { label: '#All', value: 'All' },
+  { label: '#BrandStrategy', value: 'BrandStrategy' },
+  { label: '#GTMStrategy', value: 'GTMStrategy' },
+  { label: '#DataDriven', value: 'DataDriven' },
+  { label: '#ConsumerInsight', value: 'ConsumerInsight' },
+  { label: '#ZeroToOne', value: 'ZeroToOne' },
+  { label: '#P&LOwnership', value: 'PLOwnership' },
+  { label: '#AIinMarketing', value: 'AIinMarketing' },
+];
+---
+
+<div class="filter-bar">
+  <span class="filter-label">Filter by</span>
+  <div class="filter-tags" role="group" aria-label="Filter stories by topic">
+    {
+      tags.map((tag, i) => (
+        <button
+          class:list={['filter-btn', { active: i === 0 }]}
+          data-filter={tag.value}
+          type="button"
+        >
+          {tag.label}
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-card]');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const tag = btn.dataset.filter!;
+      cards.forEach((card) => {
+        if (tag === 'All') {
+          card.style.display = '';
+        } else {
+          const cardTags = (card.dataset.tags ?? '').split(' ');
+          card.style.display = cardTags.includes(tag) ? '' : 'none';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding: 2rem 0 1.5rem;
+  }
+
+  .filter-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .filter-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.375rem 0.875rem;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border-radius: 0;
+    cursor: pointer;
+    transition:
+      background 0.12s ease,
+      color 0.12s ease,
+      border-color 0.12s ease;
+  }
+
+  .filter-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+  }
+
+  .filter-btn.active {
+    background: var(--text-primary);
+    color: var(--bg);
+    border-color: var(--text-primary);
+  }
+</style>

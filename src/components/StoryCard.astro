@@ -1,0 +1,178 @@
+---
+interface Props {
+  title: string;
+  hook: string;
+  tags: string[];
+  displayTags: string[];
+  source: string;
+  imageAlt: string;
+  url: string;
+  flipped?: boolean;
+  imageSrc?: string;
+  imageLink?: string;
+}
+
+const { title, hook, tags, displayTags, source, imageAlt, url, flipped = false, imageSrc, imageLink } = Astro.props;
+---
+
+<article
+  class:list={['card', { flipped }]}
+  data-card
+  data-tags={tags.join(' ')}
+>
+  <div class="card-text">
+    <p class="card-source">{source}</p>
+    <h2 class="card-title">{title}</h2>
+    <p class="card-hook">{hook}</p>
+    <div class="card-tags">
+      {displayTags.map((tag) => <span class="card-tag">#{tag}</span>)}
+    </div>
+    <a href={url} class="card-cta">Read the story</a>
+  </div>
+  <div class="card-image">
+    {imageSrc ? (
+      <a href={imageLink ?? url} class="card-image-link">
+        <img src={imageSrc} alt={imageAlt} class="card-img" />
+      </a>
+    ) : (
+      <div class="image-placeholder" aria-hidden="true">
+        <span>{imageAlt}</span>
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 440px;
+    border: 1px solid var(--border);
+  }
+
+  .card.flipped .card-text {
+    order: 2;
+  }
+
+  .card.flipped .card-image {
+    order: 1;
+  }
+
+  .card-text {
+    padding: 3rem 3rem 3rem 2.75rem;
+    border-left: 2.5px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card-source {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .card-hook {
+    color: var(--text-soft);
+    font-size: 1rem;
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem 0.625rem;
+  }
+
+  .card-tag {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .card-cta {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    background: var(--text-primary);
+    color: var(--bg);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0;
+    align-self: flex-start;
+    transition: background 0.15s ease;
+  }
+
+  .card-cta:hover {
+    background: var(--text-soft);
+  }
+
+  .card-image {
+    background: var(--bg-warm);
+    border-left: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card.flipped .card-image {
+    border-left: none;
+    border-right: 1px solid var(--border);
+  }
+
+  .card-image-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image-placeholder {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .card,
+    .card.flipped {
+      grid-template-columns: 1fr;
+    }
+
+    .card.flipped .card-text {
+      order: 1;
+    }
+
+    .card.flipped .card-image {
+      order: 2;
+    }
+
+    .card-image {
+      min-height: 220px;
+      border-left: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .card.flipped .card-image {
+      border-right: none;
+      border-top: 1px solid var(--border);
+    }
+  }
+</style>

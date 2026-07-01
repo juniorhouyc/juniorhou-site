@@ -1,0 +1,52 @@
+---
+const companies = ['P&G', 'Adobe', 'Citibank', 'OneCalla', 'Kellogg'];
+---
+
+<section class="logo-strip">
+  <div class="logo-strip-inner">
+    <span class="strip-label">Experience at</span>
+    <div class="logos">
+      {companies.map((name) => <span class="logo-name">{name}</span>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-strip {
+    padding: 2.5rem var(--pad-x);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo-strip-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .strip-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .logos {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .logo-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-logo);
+    letter-spacing: 0.04em;
+  }
+</style>

@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Hero from '../../components/Hero.astro';
+import CapabilitiesFlow from '../../components/CapabilitiesFlow.astro';
+import LogoStrip from '../../components/LogoStrip.astro';
+import HashtagFilter from '../../components/HashtagFilter.astro';
+import StoryCard from '../../components/StoryCard.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+
+const stories = [
+  {
+    url: '/resume/rejoice',
+    source: 'P&G · Rejoice',
+    title: 'The Brand Nobody Wanted to Save',
+    hook: 'A 30-year-old brand, four years of decline, the smallest budget in the category. I made a bet most people thought was too risky. It paid off in six months.',
+    tags: ['BrandStrategy', 'PLOwnership', 'ConsumerInsight', 'BrandTurnaround', 'CrossFunctional'],
+    displayTags: ['BrandStrategy', 'CrossFunctionalLeadership', 'PLOwnership', 'BrandTurnaround', 'ConsumerInsight'],
+    imageAlt: 'Rejoice before & after packaging',
+    flipped: false,
+    imageSrc: '/images/rejoice-after.jpeg',
+  },
+  {
+    url: '/resume/head-and-shoulders',
+    source: 'P&G · Head & Shoulders',
+    title: 'Winning Before the Market Caught On',
+    hook: "When you're already number one, the threat isn't the competition. It's your own inertia. I spotted a trend before it had a name and repositioned the brand before anyone else made the same move.",
+    tags: ['MarketIntelligence', 'TrendSpotting', 'GrowthStrategy', 'CategoryExpansion'],
+    displayTags: ['MarketIntelligence', 'TrendSpotting', 'GrowthStrategy', 'CategoryExpansion'],
+    imageAlt: 'Head & Shoulders campaign visual',
+    flipped: true,
+    imageSrc: '/images/head-and-shoulders.JPG',
+  },
+  {
+    url: '/resume/adobe',
+    source: 'Adobe',
+    title: '75 Million Users, One Overlooked Gap',
+    hook: "Tens of millions of people had tried the product and quietly stopped using it. The reason wasn't obvious. I went looking for it and found $14M sitting unaddressed.",
+    tags: ['DataDriven', 'GTMStrategy', 'ProductLedGrowth', 'RevenueGrowth', 'ConsumerInsight'],
+    displayTags: ['DataDriven', 'ProductLedGrowth', 'GTMStrategy', 'RevenueGrowth'],
+    imageAlt: 'Adobe product & data visual',
+    flipped: false,
+    imageSrc: '/images/adobe.JPG',
+  },
+  {
+    url: '/resume/onecalla',
+    source: 'OneCalla',
+    title: 'Starting From a Blank Page',
+    hook: "No brand, no playbook, no clear sense of who the customer was. I figured out the positioning before spending anything, and the first paying customer followed.",
+    tags: ['ZeroToOne', 'StartupMarketing', 'Positioning', 'ABTesting', 'ICPDiscovery'],
+    displayTags: ['ZeroToOne', 'StartupMarketing', 'Positioning', 'ABTesting'],
+    imageAlt: 'OneCalla brand visual',
+    flipped: true,
+    imageSrc: '/images/onecalla.JPG',
+  },
+  {
+    url: '/resume/brand-ops',
+    source: 'Kellogg MBA',
+    title: 'Built From a Problem I Lived Through',
+    hook: "Most brand managers don't burn out because they aren't capable. They burn out because no one told them what to do first. I built an AI system to fix that, and won the Kellogg Future Unicorn Award.",
+    tags: ['AIinMarketing', 'SystemsThinking', 'MarketingOps', 'ProductFromInsight'],
+    displayTags: ['AIinMarketing', 'SystemsThinking', 'MarketingOps'],
+    imageAlt: 'Brand Ops Manager demo or Kellogg visual',
+    flipped: false,
+    imageSrc: 'https://img.youtube.com/vi/dxGvzl2LMWk/maxresdefault.jpg',
+    imageLink: '/resume/brand-ops',
+  },
+];
+---
+
+<BaseLayout>
+  <Nav />
+  <Hero />
+  <CapabilitiesFlow />
+  <LogoStrip />
+
+  <section class="stories-section">
+    <div class="stories-inner">
+      <HashtagFilter />
+      <div class="cards-stack">
+        {
+          stories.map((story) => (
+            <StoryCard
+              url={story.url}
+              source={story.source}
+              title={story.title}
+              hook={story.hook}
+              tags={story.tags}
+              displayTags={story.displayTags}
+              imageAlt={story.imageAlt}
+              flipped={story.flipped}
+              imageSrc={story.imageSrc}
+              imageLink={story.imageLink}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .stories-section {
+    padding: 0 var(--pad-x) 4rem;
+  }
+
+  .stories-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .cards-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .cards-stack > :global(.card) {
+    margin-top: -1px;
+  }
+</style>

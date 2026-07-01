@@ -1,0 +1,103 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="eyebrow">Brand &amp; Product Marketing &middot; Bay Area</p>
+      <h1 class="hero-headline">
+        My former manager<br />
+        called me a <span class="campfire">campfire</span>.
+      </h1>
+      <div class="hero-body">
+        <p>
+          I think what he meant was that when things are stuck, I have a way of getting them moving.
+        </p>
+        <p>
+          My background sits at the intersection of CPG brand management and tech product marketing.
+          At P&amp;G I learned how to run a brand like a business: consumer research, P&amp;L
+          ownership, agency management, full-funnel execution. At Adobe I learned to do the same in
+          an environment driven by product data and funnel metrics.
+        </p>
+        <p>
+          The combination means I can move between brand strategy, product marketing, and GTM,
+          without needing to start from scratch each time.
+        </p>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="/images/headshot.jpg" alt="Junior Hou" class="headshot" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: var(--bg);
+    padding: 5rem var(--pad-x) 4rem;
+  }
+
+  .hero-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .campfire {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+    color: var(--text-soft);
+    font-size: 1.0625rem;
+    max-width: 560px;
+  }
+
+  .hero-image {
+    position: sticky;
+    top: 5rem;
+  }
+
+  .headshot {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: 58% center;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+      position: static;
+      max-width: 280px;
+    }
+  }
+</style>

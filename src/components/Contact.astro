@@ -1,0 +1,94 @@
+---
+---
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <p class="eyebrow">Open to opportunities &middot; Available from August 2026</p>
+    <h2 class="contact-headline">
+      Let's find out if<br />
+      there's something here.
+    </h2>
+    <div class="contact-actions">
+      <a href="/resume.pdf" class="btn btn-primary" download>Download resume</a>
+      <a href="mailto:junior@juniorhou.com" class="btn btn-outline">Email Junior</a>
+      <a
+        href="https://linkedin.com/in/juniorhou"
+        class="btn btn-outline"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--bg-warm);
+    padding: 6rem var(--pad-x);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-headline {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: 0;
+    border: 1.5px solid transparent;
+    transition:
+      background 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--text-primary);
+    color: var(--bg);
+    border-color: var(--text-primary);
+  }
+
+  .btn-primary:hover {
+    background: var(--text-soft);
+    border-color: var(--text-soft);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+  }
+
+  .btn-outline:hover {
+    background: var(--text-primary);
+    color: var(--bg);
+  }
+</style>
