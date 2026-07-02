@@ -42,6 +42,7 @@ const stories = [
     imageAlt: 'Adobe product & data visual',
     flipped: false,
     imageSrc: '/images/adobe.JPG',
+    ctaDisabled: true,
   },
   {
     url: '/about-me/onecalla',
@@ -92,6 +93,7 @@ const stories = [
               flipped={story.flipped}
               imageSrc={story.imageSrc}
               imageLink={story.imageLink}
+              ctaDisabled={story.ctaDisabled}
             />
           ))
         }

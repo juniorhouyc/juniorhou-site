@@ -10,9 +10,10 @@ interface Props {
   flipped?: boolean;
   imageSrc?: string;
   imageLink?: string;
+  ctaDisabled?: boolean;
 }
 
-const { title, hook, tags, displayTags, source, imageAlt, url, flipped = false, imageSrc, imageLink } = Astro.props;
+const { title, hook, tags, displayTags, source, imageAlt, url, flipped = false, imageSrc, imageLink, ctaDisabled = false } = Astro.props;
 ---
 
 <article
@@ -27,7 +28,10 @@ const { title, hook, tags, displayTags, source, imageAlt, url, flipped = false, 
     <div class="card-tags">
       {displayTags.map((tag) => <span class="card-tag">#{tag}</span>)}
     </div>
-    <a href={url} class="card-cta">Read the story</a>
+    {ctaDisabled
+      ? <span class="card-cta-disabled">Coming soon</span>
+      : <a href={url} class="card-cta">Read the story</a>
+    }
   </div>
   <div class="card-image">
     {imageSrc ? (
@@ -115,6 +119,17 @@ const { title, hook, tags, displayTags, source, imageAlt, url, flipped = false, 
 
   .card-cta:hover {
     background: var(--text-soft);
+  }
+
+  .card-cta-disabled {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    border: 1.5px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0;
   }
 
   .card-image {
